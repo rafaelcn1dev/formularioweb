@@ -90,6 +90,18 @@
           placeholder="00.000-000"
         />
       </div>
+      <div class="col-md-2">
+        <label for="dataSolicitacao" class="form-label">Data da Solicitação</label>
+        <input type="date" class="form-control" id="dataSolicitacao" />
+      </div>
+      <div class="col-md-2">
+        <label for="dias" class="form-label">Quantidade de Dias</label>
+        <input type="number" class="form-control" id="dias"/>
+      </div>
+      <div class="col-md-2">
+        <label for="valorDinheiro" class="form-label">Valor em Dinheiro</label>
+        <input type="number" class="form-control" id="valorDinheiro" step="0.01"/>
+      </div>
       <div class="col-12">
         <div class="form-check">
           <input
@@ -158,11 +170,17 @@
           const desMot = map.get("desMot");
           const estDes = map.get("estDes");
           const numCep = map.get("numCep");
+          const dataSolicitacao = map.get("dataSolicitacao");
+          const dias = map.get("dias");
+          const valorDinheiro = map.get("valorDinheiro");
 
           document.getElementById("nomDes").setAttribute("value", nomDes);
           document.getElementById("desMot").setAttribute("value", desMot);
           document.getElementById("estDes").value = estDes;
           document.getElementById("numCep").setAttribute("value", numCep);
+          document.getElementById("dataSolicitacao").setAttribute("value", dataSolicitacao);
+          document.getElementById("dias").setAttribute("value", dias);
+          document.getElementById("valorDinheiro").setAttribute("value", valorDinheiro.toFixed(2));
         }
       });
     }
@@ -180,6 +198,10 @@
       newData.nomDes = document.getElementById("nomDes").value;
       newData.estDes = selectEstado.options[selectEstado.selectedIndex].value;
       newData.numCep = document.getElementById("numCep").value;
+      newData.dataSolicitacao = document.getElementById("dataSolicitacao").value;
+      newData.dias = document.getElementById("dias").value;
+      newData.valorDinheiro = document.getElementById("valorDinheiro").value;
+      newData.valorDinheiro = parseFloat(document.getElementById("valorDinheiro").value);
       newData.check = document.getElementById("gridCheck").value;
       console.log(newData);
       return {
